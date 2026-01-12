@@ -64,66 +64,90 @@ function NavIcon({ icon }) {
 
 export default function Sidebar({ isOpen, onToggle }) {
   return (
-    <aside className={`fixed left-0 top-0 h-full bg-slate-950/80 backdrop-blur-xl border-r border-white/10 transition-all duration-300 z-40 ${isOpen ? 'w-64' : 'w-20'}`}>
-      {/* Logo */}
-      <div className="flex items-center justify-between p-6 border-b border-white/10">
-        <Link href="/" className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-cyan-400 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-slate-950">
-              <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/>
-            </svg>
-          </div>
-          {isOpen && (
-            <span className="text-white font-bold text-xl tracking-tight">KeyVault</span>
-          )}
-        </Link>
-        <button
+    <>
+      {/* Mobile overlay */}
+      {isOpen && (
+        <div 
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-30 lg:hidden"
           onClick={onToggle}
-          className="p-2 hover:bg-white/10 rounded-lg transition-colors text-slate-400 hover:text-white"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            {isOpen ? (
-              <path d="M11 17l-5-5 5-5M18 17l-5-5 5-5"/>
-            ) : (
-              <path d="M13 17l5-5-5-5M6 17l5-5-5-5"/>
-            )}
-          </svg>
-        </button>
-      </div>
+        />
+      )}
 
-      {/* Navigation */}
-      <nav className="p-4 space-y-2">
-        {navItems.map((item) => (
-          <Link
-            key={item.name}
-            href={item.href}
-            className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
-              item.active
-                ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
-                : 'text-slate-400 hover:bg-white/5 hover:text-white'
-            }`}
-          >
-            <NavIcon icon={item.icon} />
-            {isOpen && <span className="font-medium">{item.name}</span>}
-          </Link>
-        ))}
-      </nav>
-
-      {/* User Profile */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-white/10">
-        <div className={`flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 ${isOpen ? '' : 'justify-center'}`}>
-          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-violet-400 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
-            U
-          </div>
-          {isOpen && (
-            <div className="flex-1 min-w-0">
-              <p className="text-white text-sm font-medium truncate">User</p>
-              <p className="text-slate-500 text-xs truncate">user@example.com</p>
+      {/* Sidebar */}
+      <aside className={`fixed left-0 top-0 h-full bg-slate-950/95 backdrop-blur-xl border-r border-white/10 transition-all duration-300 z-40
+        ${isOpen ? 'w-64 translate-x-0' : 'w-20 -translate-x-full lg:translate-x-0'}`}>
+        {/* Logo */}
+        <div className="flex items-center justify-between p-4 lg:p-6 border-b border-white/10">
+          <Link href="/" className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-cyan-400 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-slate-950">
+                <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/>
+              </svg>
             </div>
-          )}
+            {isOpen && (
+              <span className="text-white font-bold text-xl tracking-tight">KeyVault</span>
+            )}
+          </Link>
+          <button
+            onClick={onToggle}
+            className="p-2 hover:bg-white/10 rounded-lg transition-colors text-slate-400 hover:text-white hidden lg:block"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              {isOpen ? (
+                <path d="M11 17l-5-5 5-5M18 17l-5-5 5-5"/>
+              ) : (
+                <path d="M13 17l5-5-5-5M6 17l5-5-5-5"/>
+              )}
+            </svg>
+          </button>
+          {/* Mobile close button */}
+          <button
+            onClick={onToggle}
+            className="p-2 hover:bg-white/10 rounded-lg transition-colors text-slate-400 hover:text-white lg:hidden"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
         </div>
-      </div>
-    </aside>
+
+        {/* Navigation */}
+        <nav className="p-4 space-y-2">
+          {navItems.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              onClick={() => {
+                if (window.innerWidth < 1024) onToggle();
+              }}
+              className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
+                item.active
+                  ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+                  : 'text-slate-400 hover:bg-white/5 hover:text-white'
+              }`}
+            >
+              <NavIcon icon={item.icon} />
+              {isOpen && <span className="font-medium">{item.name}</span>}
+            </Link>
+          ))}
+        </nav>
+
+        {/* User Profile */}
+        <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-white/10">
+          <div className={`flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 ${isOpen ? '' : 'justify-center'}`}>
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-violet-400 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
+              U
+            </div>
+            {isOpen && (
+              <div className="flex-1 min-w-0">
+                <p className="text-white text-sm font-medium truncate">User</p>
+                <p className="text-slate-500 text-xs truncate">user@example.com</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </aside>
+    </>
   );
 }
-
