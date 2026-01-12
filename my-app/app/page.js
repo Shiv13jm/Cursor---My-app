@@ -88,20 +88,26 @@ export default function Home() {
       </div>
 
       {/* Navigation */}
-      <nav className={`relative z-20 flex items-center justify-between px-8 py-6 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"}`}>
+      <nav className={`relative z-20 flex items-center justify-between px-4 sm:px-8 py-4 sm:py-6 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"}`}>
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-cyan-400 flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-slate-950">
               <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/>
             </svg>
           </div>
-          <span className="text-xl font-bold text-white">KeyVault</span>
+          <span className="text-xl font-bold text-white hidden sm:block">KeyVault</span>
         </div>
-        <div className="flex items-center gap-4">
-          <Link href="/playground" className="text-slate-400 hover:text-white transition-colors px-4 py-2">
-            Playground
+        <div className="flex items-center gap-2 sm:gap-4">
+          <Link href="/docs" className="text-slate-400 hover:text-white transition-colors px-2 sm:px-4 py-2 text-sm sm:text-base">
+            Docs
           </Link>
-          <Link href="/dashboards" className="px-5 py-2.5 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all font-medium border border-white/10">
+          <Link href="/pricing" className="text-slate-400 hover:text-white transition-colors px-2 sm:px-4 py-2 text-sm sm:text-base">
+            Pricing
+          </Link>
+          <Link href="/auth/signin" className="text-slate-400 hover:text-white transition-colors px-2 sm:px-4 py-2 text-sm sm:text-base hidden sm:block">
+            Sign In
+          </Link>
+          <Link href="/dashboards" className="px-4 sm:px-5 py-2 sm:py-2.5 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all font-medium border border-white/10 text-sm sm:text-base">
             Dashboard
           </Link>
         </div>

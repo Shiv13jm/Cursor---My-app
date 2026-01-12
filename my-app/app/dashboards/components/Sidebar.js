@@ -6,9 +6,9 @@ const navItems = [
   { name: "Dashboard", icon: "home", href: "/dashboards", active: false },
   { name: "API Keys", icon: "key", href: "/dashboards", active: true },
   { name: "API Playground", icon: "playground", href: "/playground", active: false },
-  { name: "Usage", icon: "chart", href: "#", active: false },
-  { name: "Logs", icon: "logs", href: "#", active: false },
-  { name: "Settings", icon: "settings", href: "#", active: false },
+  { name: "Usage", icon: "chart", href: "/dashboards", active: false },
+  { name: "Documentation", icon: "logs", href: "/docs", active: false },
+  { name: "Settings", icon: "settings", href: "/settings", active: false },
 ];
 
 function NavIcon({ icon }) {
