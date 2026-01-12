@@ -3,10 +3,10 @@
 import Link from "next/link";
 
 const navItems = [
-  { name: "Dashboard", icon: "home", href: "/dashboards", active: false },
+  { name: "Dashboard", icon: "home", href: "/dashboard", active: false },
   { name: "API Keys", icon: "key", href: "/dashboards", active: true },
   { name: "API Playground", icon: "playground", href: "/playground", active: false },
-  { name: "Usage", icon: "chart", href: "/dashboards", active: false },
+  { name: "Usage", icon: "chart", href: "/dashboard", active: false },
   { name: "Documentation", icon: "logs", href: "/docs", active: false },
   { name: "Settings", icon: "settings", href: "/settings", active: false },
 ];
